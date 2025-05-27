@@ -1,0 +1,75 @@
+
+{
+  "name": "evdekor-pro-desktop",
+  "version": "1.0.0",
+  "description": "Desktop application for EvDekor Pro",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && electron-builder",
+    "preview": "vite preview",
+    "electron:dev": "tsc -p electron/tsconfig.electron.json --watch",
+    "app:dev": "concurrently \"yarn electron:dev\" \"cross-env NODE_ENV=development electron .\""
+  },
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "electron-log": "^5.1.6",
+    "electron-updater": "^6.2.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.1",
+    "recharts": "^2.15.3",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/sqlite3": "^3.1.11",
+    "@vitejs/plugin-react": "^4.2.0",
+    "autoprefixer": "^10.4.19",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^31.0.2",
+    "electron-builder": "^24.13.3",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.5",
+    "vite-plugin-electron": "^0.28.6",
+    "vite-plugin-electron-renderer": "^0.14.5"
+  },
+  "build": {
+    "appId": "com.evdekorpro.desktop",
+    "productName": "EvDekor Pro",
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.png"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icon.png"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/icon.png"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "your-github-username",
+      "repo": "your-repo-name"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-github-username/your-repo-name.git"
+  }
+}
